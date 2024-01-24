@@ -20,7 +20,7 @@ namespace FuniPlugin
             harmony.PatchAll(typeof(StartOfRoundPatch));
             harmony.PatchAll(typeof(FlowermanAIPatch));
 
-            MyLogger.mls.LogInfo("Funi plugin is done patching.");
+            MyLogger.Debug("Funi plugin is done patching.");
         }
     }
 }

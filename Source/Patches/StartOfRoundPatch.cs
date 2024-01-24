@@ -15,10 +15,10 @@ namespace FuniPlugin
         {
             UnfortunatePlayer.Init();
 
-            MyLogger.mls.LogInfo("There are " + UnfortunatePlayer.players.Count + " unfortunates:");
+            MyLogger.Debug("There are " + UnfortunatePlayer.players.Count + " unfortunates:");
             foreach(PlayerControllerB player in UnfortunatePlayer.players)
             {
-                MyLogger.mls.LogInfo(player.playerUsername);
+                MyLogger.Debug(player.playerUsername);
             }
         }
 

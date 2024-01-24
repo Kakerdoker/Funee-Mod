@@ -55,5 +55,12 @@ namespace FuniPlugin
 			return;
 		}
 
-    }
+		//Checks for the closest player from the unfortunate players and chooses them even if they arent actually the closest, if any exist.
+		static void GetClosestPlayerPatch()
+        {
+
+        }
+
+
+	}
 }
