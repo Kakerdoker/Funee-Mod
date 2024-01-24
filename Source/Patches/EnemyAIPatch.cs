@@ -6,19 +6,19 @@ namespace FuniPlugin
 {
 
 	[HarmonyPatch(typeof(EnemyAI))]
-    internal class EnemyAIPatch
-    {
+	internal class EnemyAIPatch
+	{
 		[HarmonyPatch(nameof(EnemyAI.CheckLineOfSightForPlayer))]
 		[HarmonyPostfix]
 		//Deletes the original if-statement that checks whether the player is inside enemy's field of view. Basically gives enemies 360 vision.
 		//Makes enemy's vision range x10 larger.
 		//Applies only to unfortunate players.
 		static void CheckLineOfSightForPlayerPatch(ref int range , ref Transform ___eye, ref PlayerControllerB __result)
-        {
+		{
 			range *= 10;
 
 			foreach(PlayerControllerB player in UnfortunatePlayer.players)
-            {
+			{
 				if (player.isPlayerDead)
 					continue;
 
@@ -28,7 +28,7 @@ namespace FuniPlugin
 					__result = player;
 					return;
 				}
-            }		
+			}		
 		}
 
 
@@ -37,7 +37,7 @@ namespace FuniPlugin
 		//Deletes the if-statement checking whether the monster has a line of sight towards the closest player. Basically gives the monster a wallhack.
 		//Applies only to unfortunate players.
 		static void TargetClosestPlayerPatch(ref float bufferDistance, ref float ___mostOptimalDistance, ref PlayerControllerB ___targetPlayer, ref EnemyAI __instance, ref bool __result)
-        {
+		{
 			foreach (PlayerControllerB player in UnfortunatePlayer.players)
 			{
 				if (player.isPlayerDead)
@@ -57,9 +57,9 @@ namespace FuniPlugin
 
 		//Checks for the closest player from the unfortunate players and chooses them even if they arent actually the closest, if any exist.
 		static void GetClosestPlayerPatch()
-        {
+		{
 
-        }
+		}
 
 
 	}
