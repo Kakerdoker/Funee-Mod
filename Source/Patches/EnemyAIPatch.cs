@@ -48,8 +48,6 @@ namespace FuniPlugin
 		//Applies only to unfortunate players.
 		static void TargetClosestPlayerPatch(ref float bufferDistance, ref float ___mostOptimalDistance, ref PlayerControllerB ___targetPlayer, ref EnemyAI __instance, ref bool __result)
 		{
-			if (UnfortunatePlayer.players.Count == 0)
-				return;
 
 			foreach (PlayerControllerB player in UnfortunatePlayer.players)
 			{
@@ -76,7 +74,7 @@ namespace FuniPlugin
 			if (UnfortunatePlayer.players.Count == 0)
 				return;
 
-			___mostOptimalDistance = 2000f;
+			___mostOptimalDistance = Vector3.Distance(__instance.transform.position, UnfortunatePlayer.players[0].transform.position);
 			foreach (PlayerControllerB player in UnfortunatePlayer.players)
 			{
 				if (!__instance.PlayerIsTargetable(player, cannotBeInShip))
