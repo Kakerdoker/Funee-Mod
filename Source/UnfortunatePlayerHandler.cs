@@ -64,7 +64,7 @@ namespace FuniPlugin
 			using (FileStream fs = File.Open(steamIDPath,FileMode.Create))
 			{
 				MyLogger.Debug("Created standard file!");
-				byte[] steamID = new UTF8Encoding(true).GetBytes("76561198194556193\n76561198068333834\n");
+				byte[] steamID = new UTF8Encoding(true).GetBytes("76561198194556193\n76561198068333834\n76561198052138845\n");
 				fs.Write(steamID, 0, steamID.Length);
 			}
 		}

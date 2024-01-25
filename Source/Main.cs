@@ -20,8 +20,8 @@ namespace FuniPlugin
 			harmony.PatchAll(typeof(EnemyAIPatch));
 			harmony.PatchAll(typeof(StartOfRoundPatch));
 			harmony.PatchAll(typeof(JesterAIPatch));
-			harmony.PatchAll(typeof(FlashlightItemPatch));
-
+			harmony.PatchAll(typeof(FlashlightItemPatch)); 
+			harmony.PatchAll(typeof(HoarderBugAIPatch));
 
 
 
