@@ -1,14 +1,13 @@
 ﻿using BepInEx;
 using HarmonyLib;
-using GameNetcodeStuff;
+
 
 namespace FuniPlugin
 {
-
-	[BepInPlugin(modGUID, "Funi", "1.0.0")]
+	[BepInPlugin(modGUID, "Funee", "1.0.0")]
 	public class Main : BaseUnityPlugin
 	{
-		private const string modGUID = "Kakerdoker.Funi";
+		private const string modGUID = "Kakerdoker.Funee";
 		private readonly Harmony harmony = new Harmony(modGUID);
 		public static Main instance;
 
@@ -25,7 +24,7 @@ namespace FuniPlugin
 
 
 
-			MyLogger.Debug("Funi plugin is done patching.");
+			MyLogger.Debug("Funee plugin is done patching.");
 		}
 	}
 }

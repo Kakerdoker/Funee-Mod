@@ -15,12 +15,10 @@ namespace FuniPlugin
 		{
 			if(UnfortunatePlayer.players.Contains(___watchingPlayer))
             {
-				MyLogger.Debug("swithing to behaviour 2");
 				__instance.SwitchToBehaviourState(2);
 				___angryAtPlayer = ___watchingPlayer;
 				if (___angryTimer < 1f)
 					___angryTimer = 1f;
-				MyLogger.Debug("angy for " + ___angryTimer);
 			}
 		}
 

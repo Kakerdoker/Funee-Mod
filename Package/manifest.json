@@ -1,0 +1,9 @@
+﻿{
+    "name": "Funee",
+    "version_number": "1.0.0",
+    "website_url": "",
+    "description": "It does the Funee.",
+    "dependencies": [
+        "BepInEx-BepInExPack-5.4.2100"
+    ]
+}
