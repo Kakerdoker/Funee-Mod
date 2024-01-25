@@ -5,7 +5,7 @@ namespace FuniPlugin
 {
 
 	[HarmonyPatch(typeof(FlowermanAI))]
-	internal class FlowermanAIPatch
+	static internal class FlowermanAIPatch
 	{
 
 		[HarmonyPrefix]

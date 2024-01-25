@@ -19,6 +19,8 @@ namespace FuniPlugin
 			harmony.PatchAll(typeof(EnemyAIPatch));
 			harmony.PatchAll(typeof(StartOfRoundPatch));
 			harmony.PatchAll(typeof(FlowermanAIPatch));
+			harmony.PatchAll(typeof(FlashlightItemPatch));
+
 
 			MyLogger.Debug("Funi plugin is done patching.");
 		}

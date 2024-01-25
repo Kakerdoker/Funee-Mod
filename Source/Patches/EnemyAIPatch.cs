@@ -13,7 +13,7 @@ namespace FuniPlugin
 	 */
 
 	[HarmonyPatch(typeof(EnemyAI))]
-	internal class EnemyAIPatch
+	static internal class EnemyAIPatch
 	{
 		[HarmonyPatch(nameof(EnemyAI.CheckLineOfSightForPlayer))]
 		[HarmonyPostfix]

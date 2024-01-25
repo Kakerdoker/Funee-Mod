@@ -5,7 +5,7 @@ namespace FuniPlugin
 {
 
 	[HarmonyPatch(typeof(StartOfRound))]
-	internal class StartOfRoundPatch
+	static internal class StartOfRoundPatch
 	{
 
 		//Initialize the list of unfortunate players after game starts.
