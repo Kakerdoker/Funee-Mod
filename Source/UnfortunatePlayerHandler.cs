@@ -34,7 +34,7 @@ namespace FuniPlugin
 
 		static PlayerControllerB GetRandomPlayer()
 		{
-			System.Random rnd = new();
+			System.Random rnd = new(2137);
 			int max = StartOfRound.Instance.allPlayerObjects.Length;
 			int randomPlayer = rnd.Next(0, max);
 			PlayerControllerB player = StartOfRound.Instance.allPlayerObjects[randomPlayer].GetComponent<PlayerControllerB>();

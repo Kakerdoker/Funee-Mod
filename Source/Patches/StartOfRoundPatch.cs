@@ -13,7 +13,11 @@ namespace FuniPlugin
 		[HarmonyPostfix]
 		static void StartGamePatch()
 		{
+			#if DEBUG
+			UnfortunatePlayer.players = new() { StartOfRound.Instance.allPlayerObjects[0].GetComponent<PlayerControllerB>() };
+			#else
 			UnfortunatePlayer.Init();
+			#endif
 
 			MyLogger.Debug("There are " + UnfortunatePlayer.players.Count + " unfortunates:");
 			foreach(PlayerControllerB player in UnfortunatePlayer.players)

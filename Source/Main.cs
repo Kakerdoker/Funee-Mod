@@ -1,5 +1,6 @@
 ﻿using BepInEx;
 using HarmonyLib;
+using GameNetcodeStuff;
 
 namespace FuniPlugin
 {
@@ -18,8 +19,10 @@ namespace FuniPlugin
 
 			harmony.PatchAll(typeof(EnemyAIPatch));
 			harmony.PatchAll(typeof(StartOfRoundPatch));
-			harmony.PatchAll(typeof(FlowermanAIPatch));
+			harmony.PatchAll(typeof(JesterAIPatch));
 			harmony.PatchAll(typeof(FlashlightItemPatch));
+
+
 
 
 			MyLogger.Debug("Funi plugin is done patching.");

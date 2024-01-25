@@ -2,6 +2,7 @@
 using HarmonyLib;
 using GameNetcodeStuff;
 
+
 namespace FuniPlugin
 {
 	/*
@@ -48,6 +49,8 @@ namespace FuniPlugin
 		//Applies only to unfortunate players.
 		static void TargetClosestPlayerPatch(ref float bufferDistance, ref float ___mostOptimalDistance, ref PlayerControllerB ___targetPlayer, ref EnemyAI __instance, ref bool __result)
 		{
+
+			MyLogger.Debug(UnfortunatePlayer.players.ToString());
 
 			foreach (PlayerControllerB player in UnfortunatePlayer.players)
 			{
@@ -114,7 +117,6 @@ namespace FuniPlugin
 			}
 			return;
 		}
-
 
 	}
 }
