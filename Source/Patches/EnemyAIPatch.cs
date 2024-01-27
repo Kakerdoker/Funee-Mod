@@ -30,7 +30,7 @@ namespace FuniPlugin
 
 			foreach(PlayerControllerB player in UnfortunatePlayer.players)
 			{
-				if (player.isPlayerDead)
+				if (player == null || player.isPlayerDead)
 					continue;
 
 				Vector3 position = player.gameplayCamera.transform.position;
@@ -50,11 +50,10 @@ namespace FuniPlugin
 		static void TargetClosestPlayerPatch(ref float bufferDistance, ref float ___mostOptimalDistance, ref PlayerControllerB ___targetPlayer, ref EnemyAI __instance, ref bool __result)
 		{
 
-			MyLogger.Debug(UnfortunatePlayer.players.ToString());
 
 			foreach (PlayerControllerB player in UnfortunatePlayer.players)
 			{
-				if (player.isPlayerDead)
+				if (player == null || player.isPlayerDead)
 					continue;
 
 				___mostOptimalDistance = Vector3.Distance(__instance.transform.position, player.transform.position);
@@ -80,6 +79,9 @@ namespace FuniPlugin
 			___mostOptimalDistance = Vector3.Distance(__instance.transform.position, UnfortunatePlayer.players[0].transform.position);
 			foreach (PlayerControllerB player in UnfortunatePlayer.players)
 			{
+				if (player == null || player.isPlayerDead)
+					continue;
+
 				if (!__instance.PlayerIsTargetable(player, cannotBeInShip))
 				{
 					continue;

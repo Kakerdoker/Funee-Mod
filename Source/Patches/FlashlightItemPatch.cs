@@ -12,10 +12,12 @@ namespace FuniPlugin
 		//Make flashlight 30% worse if you are an unfortunate player
 		static void UpdatePatch(ref FlashlightItem __instance, ref Light ___flashlightBulb)
         {
+			
 			if (UnfortunatePlayer.players.Contains(__instance.playerHeldBy))
             {
 				___flashlightBulb.intensity *= 0.7f;
 			}	
+			
         }
 	}
 }

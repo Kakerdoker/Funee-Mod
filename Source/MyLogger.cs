@@ -8,9 +8,7 @@ namespace FuniPlugin
 
 		public static void Debug(string message)
 		{
-		#if DEBUG
 			mls.LogInfo(message);
-		#endif
 		}
 	}
 }
