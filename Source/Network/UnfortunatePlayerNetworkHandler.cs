@@ -1,6 +1,6 @@
 ﻿using Unity.Netcode;
 
-namespace FuniPlugin
+namespace FuneePlugin
 {
     public class UnfortunatePlayerNetworkHandler : NetworkBehaviour
     {

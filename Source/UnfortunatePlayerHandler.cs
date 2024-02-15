@@ -5,7 +5,7 @@ using System.Text;
 using System.Collections.Generic;
 using Unity.Netcode;
 
-namespace FuniPlugin
+namespace FuneePlugin
 {
 	public static class UnfortunatePlayer
 	{

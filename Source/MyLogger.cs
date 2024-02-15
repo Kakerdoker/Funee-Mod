@@ -1,6 +1,6 @@
 ﻿using BepInEx.Logging;
 
-namespace FuniPlugin
+namespace FuneePlugin
 {
 	class MyLogger
 	{
@@ -10,5 +10,11 @@ namespace FuniPlugin
 		{
 			mls.LogInfo(message);
 		}
+
+		public static void Error(string message)
+		{
+			mls.LogError(message);
+		}
+
 	}
 }

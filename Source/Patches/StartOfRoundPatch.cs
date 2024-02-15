@@ -1,7 +1,7 @@
 ﻿using HarmonyLib;
 
 
-namespace FuniPlugin
+namespace FuneePlugin
 {
 
 	[HarmonyPatch(typeof(StartOfRound))]

@@ -3,7 +3,7 @@ using HarmonyLib;
 using UnityEngine;
 using System.Reflection;
 
-namespace FuniPlugin
+namespace FuneePlugin
 {
 	[BepInPlugin(modGUID, "Funee", "1.0.0")]
 	public class Main : BaseUnityPlugin
@@ -26,6 +26,7 @@ namespace FuniPlugin
 			harmony.PatchAll(typeof(JesterAIPatch));
 			harmony.PatchAll(typeof(FlashlightItemPatch));
 			harmony.PatchAll(typeof(HoarderBugAIPatch));
+			harmony.PatchAll(typeof(CentipedeAIPatch));
 
 
 			MyLogger.Debug("Funee plugin is done patching.");

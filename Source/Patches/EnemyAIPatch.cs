@@ -3,7 +3,7 @@ using HarmonyLib;
 using GameNetcodeStuff;
 
 
-namespace FuniPlugin
+namespace FuneePlugin
 {
 	/*
 	 * 
