@@ -21,6 +21,7 @@ namespace FuniPlugin
 				HostInit();
 
 				UnfortunatePlayerNetworkHandler.Instance.ClearSteamIDListClientRpc();
+
 				foreach (PlayerControllerB player in players)
 				{
 					UnfortunatePlayerNetworkHandler.Instance.AddSteamIDToListClientRpc(player.playerSteamId);
@@ -65,11 +66,30 @@ namespace FuniPlugin
 
 		static PlayerControllerB GetRandomPlayer()
 		{
+			int amountOfActualPlayers = 0;
+			foreach(PlayerControllerB player in StartOfRound.Instance.allPlayerScripts)
+            {
+				if (player.isPlayerControlled)
+					amountOfActualPlayers++;
+            }
+
 			System.Random rnd = new();
-			int max = StartOfRound.Instance.allPlayerObjects.Length;
-			int randomPlayer = rnd.Next(0, max);
-			PlayerControllerB player = StartOfRound.Instance.allPlayerObjects[randomPlayer].GetComponent<PlayerControllerB>();
-			return player;
+			int randomPlayer = rnd.Next(0, amountOfActualPlayers);
+
+			//Choose random playerscript, counting only the ones that are controlled by a player
+			//If you have REAL FAKE REAL (where real is a player controlled script), and the random number is 1, we want it to choose the second real instead of the second in the list, which is FAKE.
+			foreach (PlayerControllerB player in StartOfRound.Instance.allPlayerScripts)
+			{
+				MyLogger.Debug("" + randomPlayer);
+				if (randomPlayer == 0)
+					return player;
+
+				if (player.isPlayerControlled)
+					randomPlayer--;
+			}
+
+			MyLogger.Error("Randomly chosen player index wasn't found inside StartOfRound.Instance.allPlayerScripts");
+			return StartOfRound.Instance.allPlayerScripts[0];
 		}
 
 		static List<PlayerControllerB> GetUnfortunatePlayers(List<ulong> steamIds)
@@ -91,7 +111,7 @@ namespace FuniPlugin
 		{
 			using (FileStream fs = File.Open(steamIDPath,FileMode.Create))
 			{
-				byte[] steamID = new UTF8Encoding(true).GetBytes("76561198194556193\n76561198068333834\n76561198052138845\n");
+				byte[] steamID = new UTF8Encoding(true).GetBytes("76561198194556193\n76561198068333834\n");
 				fs.Write(steamID, 0, steamID.Length);
 			}
 		}
