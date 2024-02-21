@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace FuneePlugin
 {
-	[BepInPlugin(modGUID, "Funee", "1.0.0")]
+	[BepInPlugin(modGUID, "Funee", "1.0.3")]
 	public class Main : BaseUnityPlugin
 	{
 		private const string modGUID = "Kakerdoker.Funee";
@@ -27,7 +27,9 @@ namespace FuneePlugin
 			harmony.PatchAll(typeof(FlashlightItemPatch));
 			harmony.PatchAll(typeof(HoarderBugAIPatch));
 			harmony.PatchAll(typeof(CentipedeAIPatch));
+			harmony.PatchAll(typeof(BaboonBirdAIPatch));
 
+			//harmony.PatchAll(typeof(DebugPatches)); 
 
 			MyLogger.Debug("Funee plugin is done patching.");
 		}

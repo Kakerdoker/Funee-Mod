@@ -55,4 +55,8 @@
       <HintPath>..\Lethal Company_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
     </Reference>
   </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy .\bin\Debug\netstandard2.1\FuneePlugin.dll &quot;C:\Users\przmk\AppData\Roaming\Thunderstore Mod Manager\DataFolder\LethalCompany\profiles\funee\BepInEx\plugins\Kakerdoker-Funee\FuneePlugin.dll&quot;&#xD;&#xA;" />
+  </Target>
 </Project>

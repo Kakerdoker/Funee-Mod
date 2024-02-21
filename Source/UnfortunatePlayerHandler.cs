@@ -18,19 +18,39 @@ namespace FuneePlugin
 		{
 			if (NetworkManager.Singleton.IsHost || NetworkManager.Singleton.IsServer)
 			{
-				HostInit();
+				if (StartOfRound.Instance.allPlayerScripts[0].playerSteamId == 0)
+					SynchronizeLAN();
+				else
+					SynchronizeNormal();
+			}
+		}
 
-				UnfortunatePlayerNetworkHandler.Instance.ClearSteamIDListClientRpc();
+		//Makes the host the unfortunate player
+		static void SynchronizeLAN()
+		{
+			players = new() { StartOfRound.Instance.allPlayerScripts[0] };
+			UnfortunatePlayerNetworkHandler.Instance.SetHostAsUnfortunatePlyerClientRpc();
+			LogPlayers();
+		}
 
-				foreach (PlayerControllerB player in players)
-				{
-					UnfortunatePlayerNetworkHandler.Instance.AddSteamIDToListClientRpc(player.playerSteamId);
-				}
+		static void SynchronizeNormal()
+		{
+			HostInit();
+			ClientInit();
+		}
 
-				UnfortunatePlayerNetworkHandler.Instance.InitializeClientRpc();
+		static void ClientInit()
+        {
+			UnfortunatePlayerNetworkHandler.Instance.ClearSteamIDListClientRpc();
+
+			foreach (PlayerControllerB player in players)
+			{
+				UnfortunatePlayerNetworkHandler.Instance.AddSteamIDToListClientRpc(player.playerSteamId);
 			}
 
+			UnfortunatePlayerNetworkHandler.Instance.InitializeClientRpc();
 		}
+
 		static void HostInit()
 		{
 			CreateStandardFileIfDoesntExist(steamIDPath);
@@ -40,10 +60,9 @@ namespace FuneePlugin
 			LogPlayers();
 		}
 
-		public static void ClientInit()
+		public static void SetPlayersFromSteamIDs()
         {
 			players = GetUnfortunatePlayers(steamIds);
-			LogPlayers();
 		}
 
 		public static void LogPlayers()
@@ -80,7 +99,6 @@ namespace FuneePlugin
 			//If you have REAL FAKE REAL (where real is a player controlled script), and the random number is 1, we want it to choose the second real instead of the second in the list, which is FAKE.
 			foreach (PlayerControllerB player in StartOfRound.Instance.allPlayerScripts)
 			{
-				MyLogger.Debug("" + randomPlayer);
 				if (randomPlayer == 0)
 					return player;
 

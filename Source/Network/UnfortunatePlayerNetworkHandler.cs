@@ -1,4 +1,5 @@
 ﻿using Unity.Netcode;
+using GameNetcodeStuff;
 
 namespace FuneePlugin
 {
@@ -18,24 +19,37 @@ namespace FuneePlugin
         [ClientRpc]
         public void ClearSteamIDListClientRpc()
         {
-            if (!NetworkManager.Singleton.IsHost)
+            if (!NetworkManager.Singleton.IsHost && !NetworkManager.Singleton.IsServer)
                 UnfortunatePlayer.steamIds.Clear();
         }
 
         [ClientRpc]
         public void AddSteamIDToListClientRpc(ulong steamID)
         {
-            if (!NetworkManager.Singleton.IsHost)
+            if (!NetworkManager.Singleton.IsHost && !NetworkManager.Singleton.IsServer)
                 UnfortunatePlayer.steamIds.Add(steamID);
         }
 
         [ClientRpc]
         public void InitializeClientRpc()
         {
-            if(!NetworkManager.Singleton.IsHost)
-                UnfortunatePlayer.ClientInit();
+            if (!NetworkManager.Singleton.IsHost && !NetworkManager.Singleton.IsServer)
+            {
+                UnfortunatePlayer.SetPlayersFromSteamIDs();
+                UnfortunatePlayer.LogPlayers();
+            }
         }
-
+        
+        [ClientRpc]
+        public void SetHostAsUnfortunatePlyerClientRpc()
+        {
+            if (!NetworkManager.Singleton.IsHost && !NetworkManager.Singleton.IsServer)
+            {
+                UnfortunatePlayer.players = new() { StartOfRound.Instance.allPlayerScripts[0] };
+                UnfortunatePlayer.LogPlayers();
+            }
+        }
+         
 
     }
 }
